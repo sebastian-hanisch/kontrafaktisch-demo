@@ -59,7 +59,7 @@ def sklearn_boxes(tree, d):
 
 
 class Model:
-    """fit(Xr, lab) mit gerasterten Trainingsdaten und 0/1-Etiketten; danach `logit(X)` und `cand_scores()` (Logit an allen 13 104 Kandidaten)."""
+    """fit(Xr, lab) mit gerasterten Trainingsdaten und 0/1-Labels; danach `logit(X)` und `cand_scores()` (Logit an allen 13 104 Kandidaten)."""
 
     def __init__(self, key, seed, rule="kleinster"):
         if key not in MODELS:

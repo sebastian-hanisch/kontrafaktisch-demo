@@ -19,7 +19,7 @@ import kfk_recourse as R  # noqa: E402
 
 @pytest.fixture(scope="session")
 def train():
-    """Trainingsdaten (n = 1 000), gerastert, mit Etiketten, Vorlauf-Maßstab und Testzeilen zu Zufalls-Seed 1."""
+    """Trainingsdaten (n = 1 000), gerastert, mit Labels, Vorlauf-Maßstab und Testzeilen zu Zufalls-Seed 1."""
     X, y = G.draw_history(1000, 1)
     Xr = R.to_raster(X)
     Xt, _ = G.draw_history(120, 100001)
