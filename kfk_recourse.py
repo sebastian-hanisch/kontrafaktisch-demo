@@ -4,7 +4,7 @@ Raster der Kandidaten (Art 4 x Kunde 12 x Zoll 2 x Wochenende 2 x Vorlauf 21 x G
 Import und Leer, mindestens 1 Tag bei Export, mindestens 0,5 Tage bei Umschlag). Gerechnet wird nur über die 13 104 zulässigen **Kandidaten**; die Reihenfolge der Kandidaten ist
 fest (Art, Kunde, Zoll, Wochenende, Vorlauf, Gewicht aufsteigend), und bei gleichen Kosten gewinnt der **kleinste Kandidaten-Index** (Gleichstandsregel des Weges).
 
-Kosten sind von dieser Demo **gesetzt**: 1 je geänderte Kategorie oder Binärgröße (Art, Kunde, Zoll, Wochenende), Vorlauf |Delta| geteilt durch die Standardabweichung der von 0
+Kosten sind von dieser Demo **gesetzt**: 1 je geänderte Kategorie oder Binärvariable (Art, Kunde, Zoll, Wochenende), Vorlauf |Delta| geteilt durch die Standardabweichung der von 0
 verschiedenen Vorlaufzeiten im Training, Gewicht |Delta|. **Politik** = Liste der veränderbaren Merkmale. **Sicherheitsabstand** m: verlangt wird Logit <= -m (nicht nur <= 0).
 Drei Rechenwege: Aufzählung über das Raster (Hauptverfahren), ganzzahliges Programm (`scipy.optimize.milp`, nur für das lineare Modell) und Blattquader (nur für Bäume).
 """
