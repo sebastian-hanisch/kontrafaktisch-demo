@@ -183,9 +183,11 @@ def milp_way(lev, act, margin, w, b, sd_v):
     structure(iv[2:], (1,), 0, np.inf)         # Export: Vorlauf mindestens 1 Tag
     structure(iv[1:], (2,), 0, np.inf)         # Umschlag: Vorlauf mindestens 0,5 Tage
     structure([16], (0,), -np.inf, 0)          # Zoll nur bei Import
-    res = milp(c, constraints=LinearConstraint(np.array(rows), np.array(lo, dtype=float), np.array(hi, dtype=float)), integrality=np.ones(n, dtype=int), bounds=Bounds(lb, ub))
-    if res.status != 0:
+    res = milp(c, constraints=LinearConstraint(np.array(rows), np.array(lo, dtype=float), np.array(hi, dtype=float)), integrality=np.ones(n, dtype=int), bounds=Bounds(lb, ub), options={"mip_rel_gap": 0.0})
+    if res.status == 2:
         return None
+    if res.status != 0:
+        raise RuntimeError(f"Weg-MILP nicht gelöst: {res.message}")
     x = res.x
     sol = (int(np.argmax(x[0:4])), int(np.argmax(x[4:16])), int(round(x[16])), int(round(x[17])), int(np.argmax(x[iv])), int(np.argmax(x[ig])))
     return float(res.fun + const), sol
